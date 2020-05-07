@@ -1,0 +1,43 @@
+<화면에서 처리해야할 데이터들>
+
+1. 공지사항 리스트
+공지번호, 제목, 공지시작일, 공지종료일
+
+2. 공지등록
+제목, 내용, 공지시작일, 공지종료일
+
+3. 공지보기
+공지번호, 제목, 내용, 공지시작일, 공지종료일, 최종수정일
+
+4. 공지수정
+공지번호(수정불가), 제목, 내용, 공지시작일, 공지종료일
+
+& 5. 공지삭제
+공지번호
+
+
+
+SQL> desc notice;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NO                                        NOT NULL NUMBER
+ TITLE                                     NOT NULL VARCHAR2(300)
+ CONTENT                                   NOT NULL VARCHAR2(2000)
+ STARTDATE                                          DATE
+ ENDDATE                                            DATE
+ WRITEDATE                                          DATE
+ UPDATEDATE                                         DATE
+
+
+select no, title, to_char(startdate, 'yyyy-mm-dd') startdate,  to_char(enddate, 'yyyy-mm-dd') enddate from notice  where startDate <= sysdate and sysdate <= enddate+1 order by no desc;
+
+
+select * from notice where no=
+
+
+insert into notice (no, title, content, startdate, enddate)
+values( (select nvl(max(no),0)
+from notice) + 1, '제에목' , '내애용', '2020-04-15','2020-05-21');
+
+
+update notice set title = 'aa',content = 'bbb',startdate = '2020-04-15',enddate = '2020-05-05',where no = 41;
