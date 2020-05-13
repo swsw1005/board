@@ -20,10 +20,8 @@ public class BoardDAO {
 
 	void connect() {
 		try {
-			// 1. 드라이버 확인
-			Class.forName(DBInfo.DRIVER);
-			// 2. 연결conn
-			con = DriverManager.getConnection(DBInfo.URL, DBInfo.UID, DBInfo.UPW);
+			// 1. 드라이버 확인+2
+			con = DBInfo.getConnection();
 		} catch (Exception e3) {
 			System.out.println("connect() fail");
 			e3.getStackTrace();

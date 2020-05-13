@@ -8,7 +8,7 @@
 <%
 // 여기 부분은 자바 입니다. -> Controller(jsp) - Service(x) - Dao(Mapper)
 System.out.println("------------ list.jsp");
-// DB에서 데이터를 가져오는 프로그램 작성 -> List<BoardDTO> -> 차후
+// DB에서 데이터를 가져오는 프로그램 작성  List<BoardDTO>  차후
 // DB 처리하는 객체를 생성하고 메서드 호출
 BoardDAO dao = new BoardDAO();
 // request객체에 담기
