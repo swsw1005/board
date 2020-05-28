@@ -106,10 +106,13 @@ request.setAttribute("list", dao.list(pageObject));
 				</td>
 			</tr> --%>
 			<tr>
-				<td colspan="5" class="w3-center"><customtag:pageNavW3
+				<td colspan="5" class="w3-center">
+				<customtag:pageNavW3
 						endPage="${pageObject.endPage }"
 						totalPage="${pageObject.totalPage }"
-						startPage="${pageObject.startPage }" page="${pageObject.page }" />
+						startPage="${pageObject.startPage }"
+						 page="${pageObject.page }" 
+						 />
 				</td>
 			</tr>
 			<tr>
@@ -118,5 +121,8 @@ request.setAttribute("list", dao.list(pageObject));
 			</tr>
 		</table>
 	</div>
+
 </body>
 </html>
+
+
