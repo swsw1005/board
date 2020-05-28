@@ -6,7 +6,7 @@
 int no = Integer.parseInt(request.getParameter("no"));
 // DB에서 no에 맞는 댓글리스트를 가져온다.
 BoardReplyDAO dao = new BoardReplyDAO();
-request.setAttribute("list", dao.getReplyList(no));
+request.setAttribute("list", dao.list(no));
 %>
 <c:forEach items="${list }" var="vo">
 	<li class="list-group-item dataRow">
@@ -16,8 +16,8 @@ request.setAttribute("list", dao.getReplyList(no));
 		</div>
 		<div><span class="writer">${vo.writer }</span>(${vo.writeDate })
 			<span class="pull-right">
-				<button class="replyUpdateBtn btn btn-primary btn-xs">수정</button>
-				<button class="replyDeleteBtn btn btn-primary btn-xs">삭제</button>
+				<button class="replyUpdateBtn btn btn-default btn-xs">수정</button>
+				<button class="replyDeleteBtn btn btn-default btn-xs">삭제</button>
 			</span>
 		</div>
 	</li>

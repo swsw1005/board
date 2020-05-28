@@ -16,7 +16,7 @@ public class BoardReplyDAO {
 
     // ............................................................
 
-    public List<BoardReplyDTO> getReplyList(int no) throws Exception {
+    public List<BoardReplyDTO> list(int no) throws Exception {
         // 출력객체
         List<BoardReplyDTO> vec = new ArrayList<>();
 
@@ -53,7 +53,7 @@ public class BoardReplyDAO {
     }
 
     // ............................................................
-    public int insert(BoardReplyDTO dto) throws Exception {
+    public int write(BoardReplyDTO dto) throws Exception {
         // 출력객체
         int temp = 0;
         try {
@@ -84,5 +84,82 @@ public class BoardReplyDAO {
     } // insert() end
 
     // ............................................................
+
+    public int update(BoardReplyDTO dto) throws Exception {
+        // 출력객체
+        int result = 0;
+
+        try {
+            // 1+2
+            con = DBInfo.getConnection();
+            // 3. sql
+            String sql = "update board_rep   set content = ?, writer = ?   where rno = ? and pw = ?";
+            // 4. 실행객체
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, dto.getContent());
+            pstmt.setString(2, dto.getWriter());
+            pstmt.setInt(3, dto.getRno());
+            pstmt.setString(4, dto.getPw());
+            // 5. 실행
+            result = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.getStackTrace();
+            throw new Exception("  ");
+        } finally {
+            DBInfo.close(con, pstmt, rs);
+        }
+        return result;
+    } // update() end------------
+
+    // ............................................................
+
+    public int delete(BoardReplyDTO dto) throws Exception {
+        // 출력객체
+        int result = 0;
+
+        try {
+            // 1+2
+            con = DBInfo.getConnection();
+            // 3. sql
+            String sql = " delete from board_rep   where rno = ? and pw = ?";
+            // 4. 실행객체
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, dto.getRno());
+            pstmt.setString(2, dto.getPw());
+            // 5. 실행
+            result = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.getStackTrace();
+            throw new Exception("  ");
+        } finally {
+            DBInfo.close(con, pstmt, rs);
+        }
+        return result;
+    } // delete() end------------
+
+    // ............................................................
+
+    public void resetPW() {
+        // sub 수정 위한 void method (ex) 조회수 증가
+
+        try {
+            // 1+2
+            con = DBInfo.getConnection();
+            // 3. sql
+            String sql = "update board_rep set pw = '123' ";
+            // 4. 실행객체
+            pstmt = con.prepareStatement(sql);
+            // 5. 실행
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.getStackTrace();
+        } finally {
+            try {
+                DBInfo.close(con, pstmt, rs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    } // resetPW() end------------
 
 }

@@ -2,8 +2,8 @@ package com.webjjang.board.dto;
 
 import lombok.*;
 
-@Getter
 @Setter
+@Getter
 public class BoardDTO {
 
     private int no;

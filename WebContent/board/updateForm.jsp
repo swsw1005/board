@@ -30,6 +30,10 @@ $(function(){
 	$(".cancelBtn").click(function(){
 		history.back();
 	});
+	
+	// Bootstrap의 tooltip 적용
+	$('[data-toggle="tooltip"]').tooltip();   
+
 });
 </script>
 
@@ -42,14 +46,15 @@ $(function(){
 	<div class="form-group">
 	  <label for="no">글번호</label>
 	  <input type="text" class="form-control" id="no" name="no"
-	   value="${dto.no }" readonly="readonly">
+	   value="${dto.no }" readonly="readonly" title="수정할 수 없습니다."
+	   data-toggle="tooltip">
 	</div>
 
 	<!-- 제목입력 -->
 	<div class="form-group">
 	  <label for="title">제목</label>
 	  <input type="text" class="form-control" id="title" name="title"
-	   value="${dto.title }" >
+	   value="${dto.title }" required="required" >
 	</div>
 
 	<!-- 내용입력 -->

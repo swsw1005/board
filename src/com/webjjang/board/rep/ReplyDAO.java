@@ -2,6 +2,8 @@ package com.webjjang.board.rep;
 
 import java.sql.*;
 import java.util.*;
+
+import com.webjjang.board.dto.BoardReplyDTO;
 import com.webjjang.util.db.DBInfo;
 
 public class ReplyDAO {
@@ -112,6 +114,60 @@ public class ReplyDAO {
         } // finally end
 
     }
+
+    // ................................................................
+
+    public int update(BoardReplyDTO dto) throws Exception {
+        // 출력객체
+        int result = 0;
+
+        try {
+            // 1+2
+            con = DBInfo.getConnection();
+            // 3. sql
+            String sql = "update board_rep " + " set content = ?, writer = ? " + " where rno = ? and pw = ?";
+
+            // 4. 실행객체
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, dto.getContent());
+            pstmt.setString(2, dto.getWriter());
+            pstmt.setInt(3, dto.getRno());
+            pstmt.setString(4, dto.getPw());
+            // 5. 실행
+            result = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.getStackTrace();
+            throw new Exception("  ");
+        } finally {
+            DBInfo.close(con, pstmt, rs);
+        }
+        return result;
+    } // update() end------------
+
+    // ................................................................
+
+    public int delete(int no) throws Exception {
+        // 출력객체
+        int result = 0;
+
+        try {
+            // 1+2
+            con = DBInfo.getConnection();
+            // 3. sql
+            String sql = "delete from board_rep where no = ?";
+            // 4. 실행객체
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, no);
+            // 5. 실행
+            result = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.getStackTrace();
+            throw new Exception("  ");
+        } finally {
+            DBInfo.close(con, pstmt, rs);
+        }
+        return result;
+    } // delete() end------------
 
     // ................................................................
 

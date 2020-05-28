@@ -7,55 +7,20 @@
   <title>Document</title>
 
   <!-- bootstrap 3.4.1 -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!-- bootstrap 3.4.1 -->
   <script src="https: //ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  <script>
-    function rep_write_true() {
-      console.log("tt");
-      document.getElementById("rep_result").innerHTML =
-        '<span class="rep_true alert alert-success">성공적으로 댓글을 작성하였을껍니다. 아마도...3초후 폭파</span>';
-      setTimeout(rep_write_reset, 3200);
-    }
-
-    function rep_write_false() {
-      console.log("ff");
-      document.getElementById("rep_result alert alert-danger").innerHTML =
-        '<span class="rep_false">댓글 입력에 실패하였습니다. 이유는 모릅니다...3초후 폭파</span>';
-      //setTimeout(rep_write_reset, 3200);
-    }
-
-    function rep_write_reset() {
-      document.getElementById("rep_result").innerHTML = "";
-    }
-  </script>
-  <style>
-    .ani {
-      transition: 1s;
-    }
-
-    .rep_grid {
-      display: grid;
-      grid-template-columns: 15px 1fr 1fr 100px;
-    }
-  </style>
 
 </head>
 
 <body>
-  <button onclick="rep_write_true()">tt</button>
-  <button onclick="rep_write_false()">ff</button>
-  <hr />
-  <span class="rep_true">성공적으로 댓글을 작성하였을껍니다. 아마도...3초후 폭파</span>
 
-  <span class="rep_false">댓글 입력에 실패하였습니다. 이유는 모릅니다...3초후 폭파</span>
-  <hr />
-  <hr />
-  <div id="rep_result"></div>
-  <hr />
-  <hr />
+
+
+  <a href="/board/list.jsp" class="btn btn-primary">게시판 이동</a>
+
 </body>
 
 </html>

@@ -9,7 +9,7 @@ System.out.println("-------------- delete.jsp");
 int no = Integer.parseInt(request.getParameter("no"));
 // DB에서 데이터 가져오기.
 BoardDAO dao = new BoardDAO();
-int result = dao.delete(no); 
+int result = dao.delete(no);
 
 // 자동으로 리스트로 간다.
 if(result == 1)
